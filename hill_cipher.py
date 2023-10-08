@@ -11,7 +11,7 @@ arguments = sys.argv[1:]
 try:
     with open(arguments[1], 'r') as file:
         text = file.read()
-        
+
     # Realizo a criptografia
     if(arguments[0] == '-encrypt'):
 
@@ -33,5 +33,6 @@ try:
     # Erro no comando executado
     else:
         print("Comando inválido!")
-except:
+except Exception as error:
     print("Comando inválido!")
+    print(error)

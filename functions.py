@@ -47,7 +47,8 @@ def hill_operation(matrix1, matrix2):
                 
                 multiplication_matrix[i, j] = value
 
-    return np.array(multiplication_matrix).transpose()
+    multiplication_matrix_rounded = np.round(multiplication_matrix).astype(int)
+    return np.array(multiplication_matrix_rounded).transpose()
     
 # Transforma valor numérico em letra
 def value_to_letter(value):
@@ -103,9 +104,7 @@ def hillCipherDecrypt(text, key):
 
     # Obtenho a matriz inversa da chave original 
     key_numpy = np.array(key)
-    determinant = np.linalg.det(key_numpy)
-    key_decryption = np.linalg.inv(key_numpy) * determinant
-    key_decryption = np.array(key_decryption).astype(int)
+    key_decryption = np.linalg.inv(key_numpy)
     print(f"Chave para descriptografar:")
     print(key_decryption)
 
@@ -118,18 +117,7 @@ def hillCipherDecrypt(text, key):
     print(text_in_matrix)
 
     # Realizo a multiplicação aplicando a chave
-    decripted_text_in_matrix = hill_operation(key_decryption, text_in_matrix) * 3
-    for i in range(decripted_text_in_matrix.shape[0]):
-        for j in range(decripted_text_in_matrix.shape[1]):
-
-            item = decripted_text_in_matrix[i, j]
-
-            value = mod_alphabetic_length(item)
-            if(value == 0):
-                value = alphabetic_length
-            
-            decripted_text_in_matrix[i, j] = value
-    decripted_text_in_matrix = decripted_text_in_matrix.astype(int)
+    decripted_text_in_matrix = hill_operation(key_decryption, text_in_matrix)
     print(f"Matriz do texto claro:")
     print(decripted_text_in_matrix)
 
