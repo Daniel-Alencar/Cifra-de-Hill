@@ -1,4 +1,5 @@
 import numpy as np
+import sympy
 
 # Tamanho do alfabeto considerado
 alphabetic_length = 26
@@ -103,9 +104,18 @@ def hillCipherCrypt(text, key):
 def hillCipherDecrypt(text, key):
 
     # Obtenho a matriz inversa da chave original 
-    key_numpy = np.array(key)
-    key_decryption = np.linalg.inv(key_numpy)
-    print(f"Chave para descriptografar:")
+    determinant = round(np.linalg.det(key))
+    print(f"Determinante da chave: {determinant}")
+
+    key_decryption = np.linalg.inv(key) * determinant
+    print(f"Matriz inversa:")
+    print(key_decryption)
+
+    inverso_multiplicativo = sympy.mod_inverse(determinant, alphabetic_length)
+    print(f"Inverso multiplicativo: {inverso_multiplicativo}")
+
+    key_decryption = (inverso_multiplicativo * key_decryption)
+    print("Chave de descriptografia:")
     print(key_decryption)
 
     # Tenho o texto cifrado
