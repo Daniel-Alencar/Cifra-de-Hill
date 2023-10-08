@@ -103,17 +103,20 @@ def hillCipherCrypt(text, key):
 # Descriptografia usando cifra de Hill
 def hillCipherDecrypt(text, key):
 
-    # Obtenho a matriz inversa da chave original 
+    # Obtenho o determinante da chave original
     determinant = round(np.linalg.det(key))
     print(f"Determinante da chave: {determinant}")
 
+    # Obtenho a matriz inversa da chave original
     key_decryption = np.linalg.inv(key) * determinant
     print(f"Matriz inversa:")
     print(key_decryption)
 
+    # Calculo o inverso multiplicativo (de acordo com o determinante)
     inverso_multiplicativo = sympy.mod_inverse(determinant, alphabetic_length)
     print(f"Inverso multiplicativo: {inverso_multiplicativo}")
 
+    # Obtenho a chave de descriptografia
     key_decryption = (inverso_multiplicativo * key_decryption)
     print("Chave de descriptografia:")
     print(key_decryption)
