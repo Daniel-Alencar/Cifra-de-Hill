@@ -1,3 +1,10 @@
+## Instalar dependências
+
+Execute o comando abaixo:
+```
+pip3 install -r requirements.txt
+```
+
 ## Criptografar mensagem
 
 - Se quiser, mude o valor da chave (variável key) no arquivo config.py
