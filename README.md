@@ -1,8 +1,32 @@
-## Instalar dependências
+## Projeto
+O projeto é uma iniciativa do uso de criptografia com python utilizando a cifra de hill. A Cifra de Hill é um tipo de cifra de substituição baseado em álgebra linear usado para codificação de mensagens.
 
-Execute o comando abaixo:
-```
-pip3 install -r requirements.txt
+## Requisitos do projeto
+
+Para rodar esta aplicação, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Python + pip](https://www.python.org/downloads/) e [virtualenv](https://virtualenv.pypa.io/en/latest/).
+
+## Execute o projeto
+
+Execute os comandos abaixo:
+```bash
+# Clone este repositório
+$ git clone https://github.com/Daniel-Alencar/Cifra-de-Hill
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd Cifra-de-Hill
+
+# Crie um ambiente virtual para instalar as dependências
+$ virtualenv myENV
+
+# Entre no ambiente virtual
+$ source myENV/bin/activate
+
+# Instale as dependências
+$ pip3 install -r requirements.txt
+
+# Execute a aplicação
+$ python3 hill_cipher.py
 ```
 
 ## Criptografar mensagem
